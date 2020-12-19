@@ -43,8 +43,21 @@ list = list[:len(list) - 1]
 idLen = len(list)
 
 line = 13
+print("输入要继续存还是重新存")
+duandian=input()
+while True:
+    if(duandian=="继续"):
+        if mysheet.Cells(line,3).Value is not None:
+            line = line+1
+            if mysheet.Cells(line,3).Value is None:
+                break
+    elif(duandian=="重新"):
+        break
 
+print(line)
 for id in range(idLen):
     mysheet.Cells(line, 3).Value = list[id]
     mysheet.Cells(line, 2).Value = "钟鑫"
     line += 1
+
+myexcel.SaveAs(pwd + os.sep+"11月每周更新工作明细(当快钟鑫) .xls")
